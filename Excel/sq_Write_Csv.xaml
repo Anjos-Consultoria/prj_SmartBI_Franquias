@@ -1,21 +1,21 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="sq_Delete_ItensFila" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="sq_Write_Csv" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="arg_in_strOrchFolder" Type="InArgument(x:String)" />
-    <x:Property Name="arg_in_strQueueName" Type="InArgument(x:String)" />
+    <x:Property Name="arg_in_dtDados" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="arg_in_strCaminho" Type="InArgument(x:String)" />
   </x:Members>
-  <this:sq_Delete_ItensFila.arg_in_strOrchFolder>
+  <this:sq_Write_Csv.arg_in_dtDados>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:sq_Write_Csv.arg_in_dtDados>
+  <this:sq_Write_Csv.arg_in_strCaminho>
     <InArgument x:TypeArguments="x:String" />
-  </this:sq_Delete_ItensFila.arg_in_strOrchFolder>
-  <this:sq_Delete_ItensFila.arg_in_strQueueName>
-    <InArgument x:TypeArguments="x:String" />
-  </this:sq_Delete_ItensFila.arg_in_strQueueName>
+  </this:sq_Write_Csv.arg_in_strCaminho>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>750,1088</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>sq_Delete_ItensFila_1</sap2010:WorkflowViewState.IdRef>
+  <sap:VirtualizedContainerService.HintSize>750,639</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>sq_Write_Csv_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="27">
+    <scg:List x:TypeArguments="x:String" Capacity="46">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,12 +41,15 @@
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
-      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -74,72 +77,48 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="sq_Delete_ItensFila" sap:VirtualizedContainerService.HintSize="400,1023" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="sq_Write_Csv" sap:VirtualizedContainerService.HintSize="400,543" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
-      <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="var_queItens" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="358,84" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Workflow usado para evitar repetir processamento do mesmo franqueado." />
     <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="358,70" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">sq_Delete_ItensFila</InArgument>
+        <InArgument x:TypeArguments="x:String">sq_Write_Csv</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Iniciando workflow: &quot; + var_strWorflow]" />
-    <ui:GetQueueItems Priority="{x:Null}" sap2010:Annotation.AnnotationText="Captura os itens que estão com o Status &quot;New&quot; na fila do projeto." DisplayName="Get Queue Items Status New" FilterStrategy="Equals" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="358,118" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[arg_in_strQueueName]" Result="[var_queItens]">
-      <ui:GetQueueItems.Duration>
-        <InArgument x:TypeArguments="s:Nullable(x:Int32)" />
-      </ui:GetQueueItems.Duration>
-      <ui:GetQueueItems.From>
-        <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
-      </ui:GetQueueItems.From>
-      <ui:GetQueueItems.Reference>
-        <InArgument x:TypeArguments="x:String" />
-      </ui:GetQueueItems.Reference>
-      <ui:GetQueueItems.Skip>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetQueueItems.Skip>
-      <ui:GetQueueItems.TimeoutMS>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetQueueItems.TimeoutMS>
-      <ui:GetQueueItems.To>
-        <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
-      </ui:GetQueueItems.To>
-      <ui:GetQueueItems.Top>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetQueueItems.Top>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:GetQueueItems>
-    <ui:DeleteQueueItems TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Deleta os itens na fila capturados pela atividade anterior." DisplayName="Delete Queue Items" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="358,118" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[var_queItens]">
+    <ui:WriteCsvFile AddHeaders="False" DataTable="[arg_in_dtDados]" Delimitator="Semicolon" DisplayName="Write CSV - Export Datable" FilePath="[arg_in_strCaminho + &quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="358,61" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:DeleteQueueItems>
-    <ui:LogMessage DisplayName="Log Message - Qtd. Itens deletados" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Foram deletados &quot; + var_queItens.Count.ToString + &quot; itens da fila!&quot;]" />
+    </ui:WriteCsvFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Finalizando workflow: &quot; + var_strWorflow]" />
   </Sequence>
 </Activity>

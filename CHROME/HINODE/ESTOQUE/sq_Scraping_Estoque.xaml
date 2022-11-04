@@ -1,21 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="sq_Delete_ItensFila" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="sq_Scraping_Estoque" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="arg_in_strOrchFolder" Type="InArgument(x:String)" />
-    <x:Property Name="arg_in_strQueueName" Type="InArgument(x:String)" />
+    <x:Property Name="arg_in_dtEstoque" Type="OutArgument(sd:DataTable)" />
   </x:Members>
-  <this:sq_Delete_ItensFila.arg_in_strOrchFolder>
-    <InArgument x:TypeArguments="x:String" />
-  </this:sq_Delete_ItensFila.arg_in_strOrchFolder>
-  <this:sq_Delete_ItensFila.arg_in_strQueueName>
-    <InArgument x:TypeArguments="x:String" />
-  </this:sq_Delete_ItensFila.arg_in_strQueueName>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>750,1088</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>sq_Delete_ItensFila_1</sap2010:WorkflowViewState.IdRef>
+  <sap:VirtualizedContainerService.HintSize>750,639</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>sq_Scraping_Estoque_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="27">
+    <scg:List x:TypeArguments="x:String" Capacity="46">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,12 +34,14 @@
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
-      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -74,72 +69,70 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="sq_Delete_ItensFila" sap:VirtualizedContainerService.HintSize="400,1023" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="sq_Scraping_Estoque" sap:VirtualizedContainerService.HintSize="400,543" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
-      <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="var_queItens" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="358,84" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Workflow usado para evitar repetir processamento do mesmo franqueado." />
     <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="358,70" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">sq_Delete_ItensFila</InArgument>
+        <InArgument x:TypeArguments="x:String">sq_Scraping_Estoque</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Iniciando workflow: &quot; + var_strWorflow]" />
-    <ui:GetQueueItems Priority="{x:Null}" sap2010:Annotation.AnnotationText="Captura os itens que estão com o Status &quot;New&quot; na fila do projeto." DisplayName="Get Queue Items Status New" FilterStrategy="Equals" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="358,118" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[arg_in_strQueueName]" Result="[var_queItens]">
-      <ui:GetQueueItems.Duration>
-        <InArgument x:TypeArguments="s:Nullable(x:Int32)" />
-      </ui:GetQueueItems.Duration>
-      <ui:GetQueueItems.From>
-        <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
-      </ui:GetQueueItems.From>
-      <ui:GetQueueItems.Reference>
-        <InArgument x:TypeArguments="x:String" />
-      </ui:GetQueueItems.Reference>
-      <ui:GetQueueItems.Skip>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetQueueItems.Skip>
-      <ui:GetQueueItems.TimeoutMS>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetQueueItems.TimeoutMS>
-      <ui:GetQueueItems.To>
-        <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
-      </ui:GetQueueItems.To>
-      <ui:GetQueueItems.Top>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetQueueItems.Top>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:GetQueueItems>
-    <ui:DeleteQueueItems TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Deleta os itens na fila capturados pela atividade anterior." DisplayName="Delete Queue Items" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="358,118" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[var_queItens]">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Hinode" sap:VirtualizedContainerService.HintSize="358,61" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="6975cb21386cab51e58fb86c95276b0b" Selector="&lt;html app='chrome.exe' title='HINODE - Saldo Atual' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,206" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[arg_in_dtEstoque]" DisplayName="Extract Structured Data - Estoque" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;/row&gt;&lt;column exact='1' name='DESCRICAO' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='ENTRADAS' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='4' /&gt;&lt;/column&gt;&lt;column exact='1' name='SAIDAS' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='5' /&gt;&lt;/column&gt;&lt;column exact='1' name='EMPENHO CONSULTOR' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='6' /&gt;&lt;/column&gt;&lt;column exact='1' name='ESTOQUE FISICO' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='10' /&gt;&lt;/column&gt;&lt;column exact='1' name='MEDIA DIARIA VENDAS' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='15' /&gt;&lt;/column&gt;&lt;column exact='1' name='DIAS DE ESTOQUE' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='16' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="0" SimulateClick="True">
+              <ui:ExtractData.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="47c4de25-41ca-4b7b-9f03-f0aa6d4b8aa3" InformativeScreenshot="1b201649707d7831617e2619e2e79267" Selector="&lt;webctrl id='relatorio' idx='2' tag='TABLE' /&gt;&lt;webctrl tag='TBODY' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:ExtractData.Target>
+            </ui:ExtractData>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:DeleteQueueItems>
-    <ui:LogMessage DisplayName="Log Message - Qtd. Itens deletados" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Foram deletados &quot; + var_queItens.Count.ToString + &quot; itens da fila!&quot;]" />
+    </ui:BrowserScope>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Finalizando workflow: &quot; + var_strWorflow]" />
   </Sequence>
 </Activity>
