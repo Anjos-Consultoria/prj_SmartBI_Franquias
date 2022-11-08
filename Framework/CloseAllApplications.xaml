@@ -56,6 +56,6 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
-    <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window - Hinode" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="a8251140c98900e6da9465980f90d8b5" Selector="&lt;html app='chrome.exe' title='HINODE*' /&gt;" WaitForReady="INTERACTIVE" />
+    <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window - Hinode" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="a8251140c98900e6da9465980f90d8b5" Selector="&lt;html app='chrome.exe' title='H*' /&gt;" WaitForReady="INTERACTIVE" />
   </Sequence>
 </Activity>

@@ -1,8 +1,9 @@
 {
-  "name": "prj_SmartBI_Franquias",
-  "description": "Robotic Enterprise Framework",
+  "name": "SMARTBI_01_PERF",
+  "description": "Faz a extração dos relatórios únicos no portal da Hinode. Para os relatórios que são baixados via URL, ele envia para a fila do Performer 02.",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Database.Activities": "[1.7.1]",
     "UiPath.Excel.Activities": "[2.16.0]",
     "UiPath.System.Activities": "[22.10.1]",
     "UiPath.Testing.Activities": "[22.10.0]",
@@ -86,6 +87,14 @@
       {
         "templateType": "Generic",
         "fileName": ".templates\\Worflow_Template.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\WorflowTemplate.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\Worflow_Template_Oficial.xaml"
       }
     ],
     "modernBehavior": false
