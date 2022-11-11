@@ -16,7 +16,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>536,1438</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>731.2,1511.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>sq_Update_StatusRpa_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -52,7 +52,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="72">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -88,9 +88,12 @@
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="sq_Update_StatusRpa" sap:VirtualizedContainerService.HintSize="546,1373" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="sq_Update_StatusRpa" sap:VirtualizedContainerService.HintSize="566.4,1446.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
     </Sequence.Variables>
@@ -99,7 +102,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Faz o update do Status no Banco de dados." DisplayName="sq_Update_StatusRpa" sap:VirtualizedContainerService.HintSize="504,1283" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Faz o update do Status no Banco de dados." DisplayName="sq_Update_StatusRpa" sap:VirtualizedContainerService.HintSize="504,1323.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="ui:DatabaseConnection" Name="var_dbConnection" />
       </Sequence.Variables>
@@ -109,7 +112,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="442,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="441.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
         </Assign.To>
@@ -117,27 +120,27 @@
           <InArgument x:TypeArguments="x:String">sq_Update_StatusRpa</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="442,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="441.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">True</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\sq_SQLite_Connection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="442,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Connection.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\sq_SQLite_Connection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="441.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Connection.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_out_dbConnection">[var_dbConnection]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:RetryScope DisplayName="Retry Scope - UPDATE" sap:VirtualizedContainerService.HintSize="442,372" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+      <ui:RetryScope DisplayName="Retry Scope - UPDATE" sap:VirtualizedContainerService.HintSize="441.6,408" sap2010:WorkflowViewState.IdRef="RetryScope_1">
         <ui:RetryScope.ActivityBody>
           <ActivityAction>
-            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="400,188" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="400,222.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command - UPDATE" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="358,98" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;UPDATE FRANQUIAS_EXECUCOES &quot; +&#xA;&quot;SET STATUS_RPA = '&quot;+ arg_in_strStatusRpa +&quot;', &quot; +&#xA; &quot;   MOTIVO_STATUS = '&quot;+ arg_in_strMotivoStatus +&quot;', &quot; +&#xA; &quot;   ULTIMA_ATUALIZACAO '&quot;+ Now.ToString +&quot;', &quot; +&#xA;&quot;WHERE GUID = '&quot; + arg_in_strGuid +&quot;'&quot;]">
+              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command - UPDATE" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="337.6,99.2" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;UPDATE FRANQUIAS_EXECUCOES &quot; +&#xD;&#xA;&quot;SET STATUS_RPA = '&quot;+ arg_in_strStatusRpa +&quot;', &quot; +&#xD;&#xA; &quot;   MOTIVO_STATUS_RPA = '&quot;+ arg_in_strMotivoStatus +&quot;', &quot; +&#xD;&#xA; &quot;   ULTIMA_ATUALIZACAO ='&quot;+ Now.ToString +&quot;' &quot; +&#xD;&#xA;&quot;WHERE GUID = '&quot; + arg_in_strGuid +&quot;'&quot;]">
                 <ui:ExecuteNonQuery.Parameters>
                   <scg:Dictionary x:TypeArguments="x:String, Argument" />
                 </ui:ExecuteNonQuery.Parameters>
@@ -155,7 +158,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:RetryScope>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\sq_SQLite_Disconnect.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="442,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Disconnect.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\sq_SQLite_Disconnect.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="441.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Disconnect.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_in_dbConnection">[var_dbConnection]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
