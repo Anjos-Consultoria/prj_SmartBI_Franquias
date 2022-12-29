@@ -6,10 +6,10 @@
     <x:Property Name="arg_in_strDataBase" Type="InArgument(x:String)" />
     <x:Property Name="arg_io_strEtapaAtual" Type="InOutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>537.6,1929.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>724.8,2256</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="42">
+    <scg:List x:TypeArguments="x:String" Capacity="24">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
@@ -37,7 +37,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -97,7 +97,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Faz a extração das URLs e envia para o segundo Performer fazer o download da URL." DisplayName="sq_Etapa_RelatorioId" sap:VirtualizedContainerService.HintSize="548,1864.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence sap2010:Annotation.AnnotationText="Faz a extração das URLs e envia para o segundo Performer fazer o download da URL." DisplayName="sq_Etapa_RelatorioId" sap:VirtualizedContainerService.HintSize="554.4,2191.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
     </Sequence.Variables>
@@ -107,7 +107,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="485.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="492,69.6" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
       </Assign.To>
@@ -115,13 +115,13 @@
         <InArgument x:TypeArguments="x:String">sq_Etapa_RelatorioId</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="485.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_85" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="492,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_85" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[arg_io_strEtapaAtual.Equals(&quot;EXTRAIR RELATORIO ID&quot;)]" DisplayName="Se ETAPA for igual a EXTRAIR FATURAMENTO" sap:VirtualizedContainerService.HintSize="485.6,1274.4" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[arg_io_strEtapaAtual.Equals(&quot;EXTRAIR RELATORIO ID&quot;)]" DisplayName="Se ETAPA for igual a EXTRAIR FATURAMENTO" sap:VirtualizedContainerService.HintSize="492,1600.8" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -129,9 +129,11 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="sq_Etapa_RelatorioId" sap:VirtualizedContainerService.HintSize="404,1008.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <Sequence DisplayName="sq_Etapa_RelatorioId" sap:VirtualizedContainerService.HintSize="410.4,1335.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="var_dtCodigos" />
+            <Variable x:TypeArguments="sd:DataTable" Name="var_dtCodigosBanco" />
+            <Variable x:TypeArguments="sd:DataTable" Name="var_dtCodigosDiferentes" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -139,26 +141,46 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CHROME\sq_NavigateTo_Url.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="341.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_77" UnSafe="False" WorkflowFileName="CHROME\sq_NavigateTo_Url.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CHROME\sq_NavigateTo_Url.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_77" UnSafe="False" WorkflowFileName="CHROME\sq_NavigateTo_Url.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="arg_in_strUrlFranquia">[arg_in_strUrlFranquia]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="arg_in_strRelatorioNome">relatorio/resumo-pedidos</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Execute_ID.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="341.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_81" UnSafe="False" WorkflowFileName="CHROME\HINODE\ID\sq_Execute_ID.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Execute_ID.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_81" UnSafe="False" WorkflowFileName="CHROME\HINODE\ID\sq_Execute_ID.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="arg_in_strPeriodo">[arg_in_strDataBase]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Scraping_ID.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="341.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_82" UnSafe="False" WorkflowFileName="CHROME\HINODE\ID\sq_Scraping_ID.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Scraping_ID.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_82" UnSafe="False" WorkflowFileName="CHROME\HINODE\ID\sq_Scraping_ID.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <OutArgument x:TypeArguments="sd:DataTable" x:Key="arg_out_dtCodigos">[var_dtCodigos]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Add_IdUrls.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="341.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_83" UnSafe="False" WorkflowFileName="ORCHESTRATOR\sq_Add_IdUrls.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\SELECT\sq_Select_HistoricoId.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_88" UnSafe="False" WorkflowFileName="SQLITE\SELECT\sq_Select_HistoricoId.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="var_dtBancoId">
+                <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="var_dtCodigosBanco" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Filter_DataTablesId.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_89" UnSafe="False" WorkflowFileName="sq_Filter_DataTablesId.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="arg_in_dtBancoIds">
+                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="var_dtCodigosBanco" />
+              </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="arg_in_dtScrapingIds">
+                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="var_dtCodigos" />
+              </InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="arg_out_dtIdsDiferentes">
+                <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="var_dtCodigosDiferentes" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Add_IdUrls.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_83" UnSafe="False" WorkflowFileName="ORCHESTRATOR\sq_Add_IdUrls.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="sd:DataTable" x:Key="arg_in_dtIdUrls">
-                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="var_dtCodigos" />
+                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="var_dtCodigosDiferentes" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="arg_in_strOrchFolder">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OrchestratorQueueFolder&quot;).ToString" />
@@ -171,7 +193,7 @@
               </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign - Etapa" sap:VirtualizedContainerService.HintSize="341.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign DisplayName="Assign - Etapa" sap:VirtualizedContainerService.HintSize="348,69.6" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[arg_io_strEtapaAtual]</OutArgument>
             </Assign.To>
@@ -179,14 +201,10 @@
               <InArgument x:TypeArguments="x:String">SUCESSO</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\UPDATE\sq_Update_EtapaAtual.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="341.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_87" UnSafe="False" WorkflowFileName="SQLITE\UPDATE\sq_Update_EtapaAtual.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\UPDATE\sq_Update_EtapaAtual.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="348,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_87" UnSafe="False" WorkflowFileName="SQLITE\UPDATE\sq_Update_EtapaAtual.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="arg_in_strGuid">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;GUID&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="arg_in_strEtapaAtual">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_io_strEtapaAtual" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="arg_in_strGuid">[in_TransactionItem.SpecificContent("GUID").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="arg_in_strEtapaAtual">[arg_io_strEtapaAtual]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
