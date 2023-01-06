@@ -12,7 +12,7 @@
   <this:sq_Etapa_RelatorioCmv.arg_in_strDataBase>
     <InArgument x:TypeArguments="x:String" />
   </this:sq_Etapa_RelatorioCmv.arg_in_strDataBase>
-  <sap:VirtualizedContainerService.HintSize>1052,1934</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,2014</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="25">
@@ -104,7 +104,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Faz a extração dos dados para a leitura dos links de download do CMV." DisplayName="sq_Etapa_RelatorioCmv" sap:VirtualizedContainerService.HintSize="603,1869" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="Faz a extração dos dados para a leitura dos links de download do CMV." DisplayName="sq_Etapa_RelatorioCmv" sap:VirtualizedContainerService.HintSize="643,1949" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
     </Sequence.Variables>
@@ -114,7 +114,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="561,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="581,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
       </Assign.To>
@@ -122,13 +122,13 @@
         <InArgument x:TypeArguments="x:String">sq_Etapa_RelatorioCmv</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="561,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="581,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[arg_io_strEtapaAtual.Equals(&quot;EXTRAIR RELATORIO CMV&quot;)]" DisplayName="Se ETAPA for igual a EXTRAIR CMV" sap:VirtualizedContainerService.HintSize="561,1353" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[arg_io_strEtapaAtual.Equals(&quot;EXTRAIR RELATORIO CMV&quot;)]" DisplayName="Se ETAPA for igual a EXTRAIR CMV" sap:VirtualizedContainerService.HintSize="581,1379" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,7 +136,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="483,1077" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="503,1100" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -167,28 +167,16 @@
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Scraping_Cmv.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="CHROME\HINODE\CMV\sq_Scraping_Cmv.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="arg_out_dtUrlsCmv">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="var_dtUrlsCmv" />
-                </OutArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="arg_out_dtUrlsCmv">[var_dtUrlsCmv]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Add_CmvUrls.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="CHROME\HINODE\CMV\sq_Add_CmvUrls.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="sd:DataTable" x:Key="arg_in_dtCmvUrls">
-                  <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="var_dtUrlsCmv" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="arg_in_strOrchFolder">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_in_dicConfig(&quot;OrchestratorQueueFolder&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="arg_in_strQueueName">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_in_dicConfig(&quot;OrchestratorQueueName_02&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="ui:QueueItem" x:Key="arg_in_queItemFila">
-                  <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="arg_in_queTransactionItem" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="arg_in_strDataBase">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_in_strDataBase" />
-                </InArgument>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="arg_in_dtCmvUrls">[var_dtUrlsCmv]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="arg_in_strOrchFolder">[arg_in_dicConfig("OrchestratorQueueFolder").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="arg_in_strQueueName">[arg_in_dicConfig("OrchestratorQueueName_02").ToString]</InArgument>
+                <InArgument x:TypeArguments="ui:QueueItem" x:Key="arg_in_queItemFila">[arg_in_queTransactionItem]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="arg_in_strDataBase">[arg_in_strDataBase]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>
@@ -197,7 +185,7 @@
               <OutArgument x:TypeArguments="x:String">[arg_io_strEtapaAtual]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">EXTRAIR RELATORIO ESTOQUE</InArgument>
+              <InArgument x:TypeArguments="x:String">SUCESSO</InArgument>
             </Assign.Value>
           </Assign>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\UPDATE\sq_Update_EtapaAtual.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="441,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SQLITE\UPDATE\sq_Update_EtapaAtual.xaml">
@@ -209,7 +197,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,80" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,103" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

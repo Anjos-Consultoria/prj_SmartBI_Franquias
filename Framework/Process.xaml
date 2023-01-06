@@ -207,10 +207,18 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Etapa_RelatorioPedidoVenda.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_68" UnSafe="False" WorkflowFileName="ETAPAS\sq_Etapa_RelatorioPedidoVenda.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="arg_io_strEtapaAtual">[var_strEtapaAtual]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="arg_in_strDataBase">[var_strDataBase]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="arg_in_strUrlFranquia">[var_strUrlFranquia]</InArgument>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+          <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="arg_io_strEtapaAtual">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_strEtapaAtual" />
+        </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_in_strDataBase">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_strDataBase" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_in_strUrlFranquia">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_strUrlFranquia" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Etapa_RelatorioTransito.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_84" UnSafe="False" WorkflowFileName="ETAPAS\sq_Etapa_RelatorioTransito.xaml">

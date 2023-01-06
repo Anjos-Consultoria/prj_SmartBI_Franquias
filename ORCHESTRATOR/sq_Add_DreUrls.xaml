@@ -9,7 +9,7 @@
   <this:sq_Add_DreUrls.arg_in_dtDreUrls>
     <InArgument x:TypeArguments="sd:DataTable" />
   </this:sq_Add_DreUrls.arg_in_dtDreUrls>
-  <sap:VirtualizedContainerService.HintSize>389.6,730.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,1753</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -103,7 +103,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Adiciona a datatable de URLs de pedido em trânsito na fila do robô de download por URL." DisplayName="sq_Add_DreUrls" sap:VirtualizedContainerService.HintSize="400,665.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap2010:Annotation.AnnotationText="Adiciona a datatable de URLs de pedido em trânsito na fila do robô de download por URL." DisplayName="sq_Add_DreUrls" sap:VirtualizedContainerService.HintSize="636,1688" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
     </Sequence.Variables>
@@ -113,7 +113,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="337.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="574,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
       </Assign.To>
@@ -121,19 +121,19 @@
         <InArgument x:TypeArguments="x:String">sq_Add_TransitoUrls</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="337.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="574,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[arg_in_dtDreUrls]" DisplayName="For Each In URLs" sap:VirtualizedContainerService.HintSize="433.6,521.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[arg_in_dtDreUrls]" DisplayName="For Each In URLs" sap:VirtualizedContainerService.HintSize="574,1119" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Add Item na fila" sap:VirtualizedContainerService.HintSize="400,396" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Add Item na fila" sap:VirtualizedContainerService.HintSize="540,1003" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="var_listItensCodigos" />
             </Sequence.Variables>
@@ -143,7 +143,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetQueueItems Priority="{x:Null}" sap2010:Annotation.AnnotationText="Verifica na fila se não existe um item que já irá baixar esse código. Útil em momentos onde a conexão com o orchestrator falha e o processo volta para o início." DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="337.6,170.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[arg_in_strQueueName]" Reference="[row(0).ToString + &quot; - &quot; + arg_in_queItemFila.SpecificContent(&quot;FRANQUIA&quot;).ToString]" Result="[var_listItensCodigos]">
+            <ui:GetQueueItems Priority="{x:Null}" sap2010:Annotation.AnnotationText="Verifica na fila se não existe um item que já irá baixar esse código. Útil em momentos onde a conexão com o orchestrator falha e o processo volta para o início." DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="478,154" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[arg_in_strQueueName]" Reference="[row(0).ToString + &quot; - &quot; + arg_in_queItemFila.SpecificContent(&quot;FRANQUIA&quot;).ToString]" Result="[var_listItensCodigos]">
               <ui:GetQueueItems.Duration>
                 <InArgument x:TypeArguments="s:Nullable(x:Int32)" />
               </ui:GetQueueItems.Duration>
@@ -170,21 +170,21 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:GetQueueItems>
-            <If Condition="[var_listItensCodigos.Count.Equals(0)]" DisplayName="Se não existe um item na fila como NEW" sap:VirtualizedContainerService.HintSize="481.6,556" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[var_listItensCodigos.Count.Equals(0)]" DisplayName="Se não existe um item na fila como NEW" sap:VirtualizedContainerService.HintSize="478,698" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Add Item na fila" sap:VirtualizedContainerService.HintSize="400,288" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                <Sequence DisplayName="Add Item na fila" sap:VirtualizedContainerService.HintSize="400,422" sap2010:WorkflowViewState.IdRef="Sequence_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item - Pedido &amp; URL" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[arg_in_strQueueName]" Reference="[Right(row(0).ToString, 12).Replace(&quot;/&quot;, &quot;&quot;) + &quot; - &quot; + arg_in_strFranquia]">
+                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item - Pedido &amp; URL" FolderPath="[arg_in_strOrchFolder]" sap:VirtualizedContainerService.HintSize="338,219" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[arg_in_strQueueName]" Reference="[Right(row(0).ToString, 12).Replace(&quot;/&quot;, &quot;&quot;) + &quot; - &quot; + arg_in_strFranquia]">
                     <ui:AddQueueItem.ItemInformation>
                       <InArgument x:TypeArguments="x:String" x:Key="FRANQUIA">[arg_in_queItemFila.SpecificContent("FRANQUIA").ToString]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="URL">[Split(row(0).ToString, ".com.br/")(1).ToString]</InArgument>
@@ -199,12 +199,12 @@
                     </ui:AddQueueItem.TimeoutMS>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:AddQueueItem>
-                  <ui:LogMessage DisplayName="Log Message - Pedido" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Pedido &quot; + row(0).ToString + &quot; adicionado na fila.&quot;]">
+                  <ui:LogMessage DisplayName="Log Message - Pedido" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Pedido &quot; + Split(row(0).ToString, &quot;.com.br/&quot;)(1).ToString + &quot; adicionado na fila.&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -215,7 +215,7 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,102.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Pedido &quot; + row(0).ToString + &quot; já está na fila para processamento.&quot;]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Pedido &quot; + row(0).ToString + &quot; já está na fila para processamento.&quot;]" />
               </If.Else>
             </If>
           </Sequence>
@@ -223,12 +223,12 @@
       </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="337.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="574,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">False</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>

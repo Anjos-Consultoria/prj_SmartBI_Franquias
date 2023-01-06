@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>724.8,2160.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1052,2069</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>sq_Insert_Franquia_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -92,7 +92,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="sq_Insert_Franquia" sap:VirtualizedContainerService.HintSize="710.4,2096" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="sq_Insert_Franquia" sap:VirtualizedContainerService.HintSize="710,2004" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
       <Variable x:TypeArguments="sd:DataTable" Name="var_dtResult" />
@@ -102,7 +102,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Insere a franquia que está sendo processada." DisplayName="sq_Insert_Franquia" sap:VirtualizedContainerService.HintSize="648,1972.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Insere a franquia que está sendo processada." DisplayName="sq_Insert_Franquia" sap:VirtualizedContainerService.HintSize="648,1893" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="ui:DatabaseConnection" Name="var_dbConnection" />
       </Sequence.Variables>
@@ -112,7 +112,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="585.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="586,81" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
         </Assign.To>
@@ -120,27 +120,27 @@
           <InArgument x:TypeArguments="x:String">sq_Insert_Franquia</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="585.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="586,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">True</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\sq_SQLite_Connection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="585.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Connection.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SQLITE\sq_SQLite_Connection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="586,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Connection.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_out_dbConnection">[var_dbConnection]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:RetryScope DisplayName="Retry Scope - Select" sap:VirtualizedContainerService.HintSize="585.6,62.4" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+      <ui:RetryScope DisplayName="Retry Scope - Select" sap:VirtualizedContainerService.HintSize="586,52" sap2010:WorkflowViewState.IdRef="RetryScope_2">
         <ui:RetryScope.ActivityBody>
           <ActivityAction>
-            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="400,222.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="400,200" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[var_dtResult]" DisplayName="Run query - Registro com mesmo GUID" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="337.6,99.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;SELECT * FROM FRANQUIAS_EXECUCOES WHERE GUID = '&quot; +arg_in_strGuid +&quot;'&quot;]">
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[var_dtResult]" DisplayName="Run query - Registro com mesmo GUID" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="338,89" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;SELECT * FROM FRANQUIAS_EXECUCOES WHERE GUID = '&quot; +arg_in_strGuid +&quot;'&quot;]">
                 <ui:ExecuteQuery.Parameters>
                   <InArgument x:TypeArguments="x:String" x:Key="guid">[arg_in_strGuid]</InArgument>
                 </ui:ExecuteQuery.Parameters>
@@ -158,7 +158,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:RetryScope>
-      <If sap2010:Annotation.AnnotationText="Caso já exista um registro com o mesmo GUID, não irá inserir o registo novamente no banco." Condition="[var_dtResult.Rows.Count = 0]" DisplayName="Se não existir registro no banco de dados" sap:VirtualizedContainerService.HintSize="585.6,953.6" sap2010:WorkflowViewState.IdRef="If_1">
+      <If sap2010:Annotation.AnnotationText="Caso já exista um registro com o mesmo GUID, não irá inserir o registo novamente no banco." Condition="[var_dtResult.Rows.Count = 0]" DisplayName="Se não existir registro no banco de dados" sap:VirtualizedContainerService.HintSize="586,906" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -167,22 +167,22 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="504,531.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence sap:VirtualizedContainerService.HintSize="504,486" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope DisplayName="Retry Scope - Insert Franquia" sap:VirtualizedContainerService.HintSize="441.6,408" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+            <ui:RetryScope DisplayName="Retry Scope - Insert Franquia" sap:VirtualizedContainerService.HintSize="442,375" sap2010:WorkflowViewState.IdRef="RetryScope_1">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="400,222.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="400,200" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command - Insert" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="337.6,99.2" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;INSERT INTO FRANQUIAS_EXECUCOES ( &quot; +&#xD;&#xA;&quot;&#x9;GUID, &quot; +&#xD;&#xA;&quot;&#x9;FRANQUIA, &quot; +&#xD;&#xA;&quot;&#x9;DATA_EXECUCAO, &quot; +&#xD;&#xA;&quot;&#x9;ETAPA_ATUAL, &quot; +&#xD;&#xA;&quot;&#x9;STATUS_RPA, &quot; +&#xD;&#xA;&quot;&#x9;ULTIMA_ATUALIZACAO) &quot; +&#xD;&#xA;&quot;VALUES ( &quot; + &#xD;&#xA;&quot;'&quot; +&#x9;arg_in_strGuid + &quot;', &quot; +&#xD;&#xA;&quot;'&quot; +&#x9;arg_in_strNomeFranquia + &quot;', &quot; +&#xD;&#xA;&quot;'&quot; +&#x9;Now.ToString + &quot;', &quot; +&#xD;&#xA;&quot;&#x9;'EXTRAIR RELATORIO ID',&quot; +&#xD;&#xA;&quot;&#x9;'IN PROGRESS', &quot; +&#xD;&#xA;&quot;&#x9;'&quot; +&#x9;Now.ToString + &quot;')&quot;]">
+                    <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command - Insert" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="338,89" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;INSERT INTO FRANQUIAS_EXECUCOES ( &quot; +&#xD;&#xA;&quot;&#x9;GUID, &quot; +&#xD;&#xA;&quot;&#x9;FRANQUIA, &quot; +&#xD;&#xA;&quot;&#x9;DATA_EXECUCAO, &quot; +&#xD;&#xA;&quot;&#x9;ETAPA_ATUAL, &quot; +&#xD;&#xA;&quot;&#x9;STATUS_RPA, &quot; +&#xD;&#xA;&quot;&#x9;ULTIMA_ATUALIZACAO) &quot; +&#xD;&#xA;&quot;VALUES ( &quot; + &#xD;&#xA;&quot;'&quot; +&#x9;arg_in_strGuid + &quot;', &quot; +&#xD;&#xA;&quot;'&quot; +&#x9;arg_in_strNomeFranquia + &quot;', &quot; +&#xD;&#xA;&quot;'&quot; +&#x9;Now.ToString + &quot;', &quot; +&#xD;&#xA;&quot;&#x9;'EXTRAIR RELATORIO FATURAMENTO',&quot; +&#xD;&#xA;&quot;&#x9;'IN PROGRESS', &quot; +&#xD;&#xA;&quot;&#x9;'&quot; +&#x9;Now.ToString + &quot;')&quot;]">
                       <ui:ExecuteNonQuery.Parameters>
                         <InArgument x:TypeArguments="x:String" x:Key="guid">[arg_in_strGuid]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="franquia">[arg_in_strNomeFranquia]</InArgument>
@@ -214,7 +214,7 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="400,225.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence sap:VirtualizedContainerService.HintSize="400,213" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
